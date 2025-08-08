@@ -83,16 +83,17 @@ For Hardware:
 
 ### Project Demo
 # Video
-[Add your demo video link here]
+https://drive.google.com/file/d/1RMr8XmYxsqlPIWk79zC0-8y3PrvpcUHL/view?usp=sharing
 *Explain what the video demonstrates*
+The video shows how each human message gets translated to chicken language phrases when input is given. This video also shows dictionary page and bonus(when clicked, a song is played), pause is also clicked.
 
 # Additional Demos
 [Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- Samha Zubair: Frontend
+- Neenu Josey: Frontend
+
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
