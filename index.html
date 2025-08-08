@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicken Translator 3000</title>
+  <style>
+    #head {
+      text-align: center;
+      color: red;
+      font-size: 90px;
+    }
+    body {
+      font-family: 'Comic Neue', cursive;
+      background-color: #EEE8AA;
+    }
+    .button-box {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio files -->
+  <audio id="goodmorningSound" src="kokkarakko.mp3"></audio>
+  <audio id="goodnightSound" src="baawwk.mp3"></audio>
+  <audio id="vowelEndSound" src="bawk bawk bawk.mp3"></audio>
+  <audio id="consonantEndSound" src="cluck cluck cluck.mp3"></audio>
+  <audio id="keekeeSound" src="keekee.mp3"></audio>
+  <audio id="bonusAudio" src="Chicken Song1.mp3"></audio>
+
+  <h1 id="head">🐔CluckLingua..</h1>
+
+  <div style="text-align: center; margin-top: 30px;">
+    <form id="myForm" action="#" method="POST">
+      <p>
+        <label for="input"></label><br>
+        <input type="text" id="input" placeholder="Say anything.." style="padding: 10px; width: 550px;">
+      </p>
+      <div class="button-box">
+        <button type="submit">Translate</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- ✅ Only one output container -->
+  <div id="output" style="text-align: center; margin-top: 20px; font-size: 24px; color: brown;"></div>
+
+  <!-- Dictionary link -->
+  <a href="dictionary.html" style="position: fixed; right: 28px; bottom: 28px; padding: 12px 28px; background: #F4C2C2; color: #333; border-radius: 8px; text-decoration: none; font-size: 18px; font-family: inherit; box-shadow: 0 4px 16px rgba(120,120,120,0.13); transition: background 0.2s; z-index: 1000; border: 2px solid #bdbdbd;" onmouseover="this.style.background='#f7b0b0'" onmouseout="this.style.background='#F4C2C2'">
+    Dictionary
+  </a>
+
+  <!-- Bonus audio controls -->
+  <a href="javascript:void(0);" onclick="document.getElementById('bonusAudio').currentTime=0;document.getElementById('bonusAudio').play();" style="position: fixed; left: 28px; bottom: 28px; padding: 12px 28px; background: #F4C2C2; color: #333; border-radius: 8px; text-decoration: none; font-size: 18px; font-family: inherit; box-shadow: 0 4px 16px rgba(120,120,120,0.13); transition: background 0.2s; z-index: 1000; border: 2px solid #bdbdbd;" onmouseover="this.style.background='#f7b0b0'" onmouseout="this.style.background='#F4C2C2'">
+    Bonus
+  </a>
+
+  <a href="javascript:void(0);" onclick="document.getElementById('bonusAudio').pause();" style="position: fixed; left: 130px; bottom: 28px; padding: 12px 28px; background: #F4C2C2; color: #333; border-radius: 8px; text-decoration: none; font-size: 18px; font-family: inherit; box-shadow: 0 4px 16px rgba(120,120,120,0.13); transition: background 0.2s; z-index: 1000; border: 2px solid #bdbdbd;" onmouseover="this.style.background='#f7b0b0'" onmouseout="this.style.background='#F4C2C2'">
+    Pause
+  </a>
+
+  <!-- JavaScript -->
+  <script>
+    const output = document.getElementById("output");
+    const sound = document.getElementById("goodmorningSound");
+    const goodnightSound = document.getElementById("goodnightSound");
+    const vowelEndSound = document.getElementById("vowelEndSound");
+    const consonantEndSound = document.getElementById("consonantEndSound");
+    const keekeeSound = document.getElementById("keekeeSound");
+
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const inputValue = document.getElementById("input").value.toLowerCase().trim();
+      console.log("User entered:", inputValue);
+
+      if (inputValue === "hello" || inputValue === "hi" || inputValue === "bye" || inputValue === "hey") {
+        output.textContent = "kee kee..";
+        keekeeSound.currentTime = 0;
+        keekeeSound.play();
+      }
+      else if (inputValue === "") {
+        output.textContent = "👉Enter a message to be translated..🍗.";
+      }
+      else if (inputValue === "good morning") {
+        output.textContent = "kokkara kokkara ko..";
+        sound.currentTime = 0;
+        sound.play();
+      }
+      else if (inputValue === "good night") {
+        output.textContent = "baaawwk..";
+        goodnightSound.currentTime = 0;
+        goodnightSound.play();
+      }
+      else if (/[aeiou]$/.test(inputValue)) {
+        output.textContent = "bawk bawk bawk..";
+        vowelEndSound.currentTime = 0;
+        vowelEndSound.play();
+      }
+      else if (/[bcdfghjklmnpqrstvwxyz]$/.test(inputValue)) {
+        output.textContent = "cluck cluck cluck..";
+        consonantEndSound.currentTime = 0;
+        consonantEndSound.play();
+      }
+      else {
+        output.textContent = "🐔 I don't speak that language yet!";
+      }
+
+      document.getElementById("input").value = "";
+
+      setTimeout(() => {
+        output.textContent = "";
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
